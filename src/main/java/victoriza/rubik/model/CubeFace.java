@@ -84,7 +84,7 @@ public class CubeFace {
         return matrix[x % MAX_ROWS][y % MAX_COLUMNS];
     }
 
-    public List<Integer> getAllElements() {
+    protected List<Integer> getAllElements() {
         List<Integer> elements = new ArrayList<Integer>();
         int i, j;
         for (i = 0; i <MAX_ROWS; i++) {
@@ -132,7 +132,7 @@ public class CubeFace {
 
     }
 
-    protected int[][] getMatrix() {
+    public int[][] getMatrix() {
         return matrix;
     }
 

@@ -62,6 +62,19 @@ public class RubikCube extends Cube implements RubikCubeInterface {
         return isRubikCubeValid();
     }
 
+    /**
+     *          [4, 4, 4]
+     *          [4, 4, 4]
+     *          [4, 4, 4]
+     * [3, 3, 3][0, 0, 0][1, 1, 1][2, 2, 2]
+     * [3, 3, 3][0, 0, 0][1, 1, 1][2, 2, 2]
+     * [3, 3, 3][0, 0, 0][1, 1, 1][2, 2, 2]
+     *          [5, 5, 5]
+     *          [5, 5, 5]
+     *          [5, 5, 5]
+     *
+     * @return
+     */
     @Override
     public String toString() {
         String newline = System.getProperty(LINE_SEPARATOR);

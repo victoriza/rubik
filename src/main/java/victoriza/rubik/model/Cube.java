@@ -128,7 +128,7 @@ abstract class Cube  {
         rCube.set(position,face);
     }
 
-    protected List<CubeFace> getAllFaces() {
+    public List<CubeFace> getAllFaces() {
         return new ArrayList<CubeFace>(rCube);
     }
 
