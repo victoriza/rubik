@@ -32,6 +32,15 @@ abstract class Cube  {
         rCube.add(new CubeFace(random));
     }
 
+    public Cube(int[][] values) {
+        rCube.add(new CubeFace(values));
+        rCube.add(new CubeFace(values));
+        rCube.add(new CubeFace(values));
+        rCube.add(new CubeFace(values));
+        rCube.add(new CubeFace(values));
+        rCube.add(new CubeFace(values));
+    }
+
     protected void rotateCubeFront(int zDeep) {
         CubeFace rightFace = getFaceCopy(RIGHT_FACE);
         CubeFace leftFace = getFaceCopy(LEFT_FACE);

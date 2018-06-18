@@ -18,6 +18,10 @@ public class RubikCube extends Cube implements RubikCubeInterface {
         super(isRandom);
     }
 
+    public RubikCube(int[][] values) {
+        super(values);
+    }
+
     public void rotateColumn(int column) {
         super.rotateColumn(column);
     }

@@ -5,10 +5,14 @@ import victoriza.rubik.model.RubikCube;
 
 import java.awt.*;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class RubikDrawing extends Canvas {
 
-    public static final int CUBE_UNIT = 50;
+    private static final Logger logger = Logger.getLogger("log");
+
+    private static final int CUBE_UNIT = 50;
     public static final int FACE_UNIT = CUBE_UNIT * 3;
     public static final int FACE_PADDING = 5;
 
@@ -20,10 +24,6 @@ public class RubikDrawing extends Canvas {
     public RubikDrawing(RubikCube cube) {
         super();
         rCube = cube;
-    }
-
-    public void setRubikCube(RubikCube rubikCube) {
-        rCube = rubikCube;
     }
 
     /**
@@ -42,8 +42,7 @@ public class RubikDrawing extends Canvas {
 
     @Override
     public void paint(Graphics g) {
-        System.out.println("paint!");
-
+        logger.log(Level.INFO, rCube.toString());
         List<CubeFace> faces = rCube.getAllFaces();
 
         int paddingX = INITIAL_PADDING_X;
@@ -51,7 +50,7 @@ public class RubikDrawing extends Canvas {
 
         int currentFace = 0;
         for (CubeFace face : faces) {
-
+            logger.log(Level.INFO, face.toString());
             if (currentFace == 0) {
                 paddingX = INITIAL_PADDING_X;
                 paddingY = INITIAL_PADDING_Y;
@@ -71,12 +70,18 @@ public class RubikDrawing extends Canvas {
             }
 
             int[][] matrix = face.getMatrix();
-            int i, j;
-            for (i = 0; i < 3; i++) {
-                for (j = 0; j < 3; j++) {
-                    drawCubeItem(g, (paddingX + (CUBE_UNIT * i)), (paddingY + (CUBE_UNIT * j)), matrix[i][j]);
-                }
-            }
+            drawCubeItem(g, (paddingX + (CUBE_UNIT * 0)), (paddingY + (CUBE_UNIT * 0)), matrix[0][0]);
+            drawCubeItem(g, (paddingX + (CUBE_UNIT * 1)), (paddingY + (CUBE_UNIT * 0)), matrix[0][1]);
+            drawCubeItem(g, (paddingX + (CUBE_UNIT * 2)), (paddingY + (CUBE_UNIT * 0)), matrix[0][2]);
+
+            drawCubeItem(g, (paddingX + (CUBE_UNIT * 0)), (paddingY + (CUBE_UNIT * 1)), matrix[1][0]);
+            drawCubeItem(g, (paddingX + (CUBE_UNIT * 1)), (paddingY + (CUBE_UNIT * 1)), matrix[1][1]);
+            drawCubeItem(g, (paddingX + (CUBE_UNIT * 2)), (paddingY + (CUBE_UNIT * 1)), matrix[1][2]);
+
+            drawCubeItem(g, (paddingX + (CUBE_UNIT * 0)), (paddingY + (CUBE_UNIT * 2)), matrix[2][0]);
+            drawCubeItem(g, (paddingX + (CUBE_UNIT * 1)), (paddingY + (CUBE_UNIT * 2)), matrix[2][1]);
+            drawCubeItem(g, (paddingX + (CUBE_UNIT * 2)), (paddingY + (CUBE_UNIT * 2)), matrix[2][2]);
+
             currentFace ++;
         }
     }
@@ -99,7 +104,7 @@ public class RubikDrawing extends Canvas {
     }
 
     private Color getColor(int element) {
-        switch (element) {
+        switch (element % 6) {
             case 0 : {
                 return Color.RED;
             } case 1 : {

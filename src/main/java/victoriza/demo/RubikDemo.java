@@ -11,7 +11,13 @@ import java.util.concurrent.TimeUnit;
 public class RubikDemo {
 
     private final static JFrame FRAME = new JFrame("Rubik");
-    private final static RubikDrawing RUBIK_CANVAS = new RubikDrawing(new RubikCube(false));
+
+    private final static int[][] values = { {0,1,2},
+                                            {3,4,3},
+                                            {0,1,0}};
+
+    private final static RubikCube rCube = new RubikCube();
+    private final static RubikDrawing RUBIK_CANVAS = new RubikDrawing(rCube);
 
     private static int CANVAS_WIDTH = 600;
     private static int CANVAS_HEIGHT = RubikDrawing.FACE_UNIT * 3 + RubikDrawing.FACE_PADDING * 3;
@@ -26,9 +32,15 @@ public class RubikDemo {
         exec.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
-                RUBIK_CANVAS.setRubikCube(new RubikCube(true));
+                randomOperation();
                 FRAME.getContentPane().add(RUBIK_CANVAS);
             }
         }, 0, 5, TimeUnit.SECONDS);
+    }
+
+    private static void randomOperation() {
+        rCube.rotateRow(0);
+        rCube.rotateColumn(1);
+        rCube.rotateRow(2);
     }
 }
