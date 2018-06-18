@@ -40,7 +40,8 @@ public class RubikDemo {
 
     private static void randomOperation() {
         rCube.rotateRow(0);
-        rCube.rotateColumn(1);
         rCube.rotateRow(2);
+        rCube.rotateColumn(0);
+        rCube.rotateColumn(2);
     }
 }

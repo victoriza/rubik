@@ -70,20 +70,23 @@ public class RubikDrawing extends Canvas {
             }
 
             int[][] matrix = face.getMatrix();
-            drawCubeItem(g, (paddingX + (CUBE_UNIT * 0)), (paddingY + (CUBE_UNIT * 0)), matrix[0][0]);
-            drawCubeItem(g, (paddingX + (CUBE_UNIT * 1)), (paddingY + (CUBE_UNIT * 0)), matrix[0][1]);
-            drawCubeItem(g, (paddingX + (CUBE_UNIT * 2)), (paddingY + (CUBE_UNIT * 0)), matrix[0][2]);
-
-            drawCubeItem(g, (paddingX + (CUBE_UNIT * 0)), (paddingY + (CUBE_UNIT * 1)), matrix[1][0]);
-            drawCubeItem(g, (paddingX + (CUBE_UNIT * 1)), (paddingY + (CUBE_UNIT * 1)), matrix[1][1]);
-            drawCubeItem(g, (paddingX + (CUBE_UNIT * 2)), (paddingY + (CUBE_UNIT * 1)), matrix[1][2]);
-
-            drawCubeItem(g, (paddingX + (CUBE_UNIT * 0)), (paddingY + (CUBE_UNIT * 2)), matrix[2][0]);
-            drawCubeItem(g, (paddingX + (CUBE_UNIT * 1)), (paddingY + (CUBE_UNIT * 2)), matrix[2][1]);
-            drawCubeItem(g, (paddingX + (CUBE_UNIT * 2)), (paddingY + (CUBE_UNIT * 2)), matrix[2][2]);
-
+            drawRubik(g, paddingX, paddingY, matrix);
             currentFace ++;
         }
+    }
+
+    private void drawRubik(Graphics g, int paddingX, int paddingY, int[][] matrix) {
+        drawCubeItem(g, (paddingX + (CUBE_UNIT * 0)), (paddingY + (CUBE_UNIT * 0)), matrix[0][0]);
+        drawCubeItem(g, (paddingX + (CUBE_UNIT * 1)), (paddingY + (CUBE_UNIT * 0)), matrix[0][1]);
+        drawCubeItem(g, (paddingX + (CUBE_UNIT * 2)), (paddingY + (CUBE_UNIT * 0)), matrix[0][2]);
+
+        drawCubeItem(g, (paddingX + (CUBE_UNIT * 0)), (paddingY + (CUBE_UNIT * 1)), matrix[1][0]);
+        drawCubeItem(g, (paddingX + (CUBE_UNIT * 1)), (paddingY + (CUBE_UNIT * 1)), matrix[1][1]);
+        drawCubeItem(g, (paddingX + (CUBE_UNIT * 2)), (paddingY + (CUBE_UNIT * 1)), matrix[1][2]);
+
+        drawCubeItem(g, (paddingX + (CUBE_UNIT * 0)), (paddingY + (CUBE_UNIT * 2)), matrix[2][0]);
+        drawCubeItem(g, (paddingX + (CUBE_UNIT * 1)), (paddingY + (CUBE_UNIT * 2)), matrix[2][1]);
+        drawCubeItem(g, (paddingX + (CUBE_UNIT * 2)), (paddingY + (CUBE_UNIT * 2)), matrix[2][2]);
     }
 
     private void drawCubeItem(Graphics g, int x, int y, int element) {
